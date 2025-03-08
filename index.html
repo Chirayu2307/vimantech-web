@@ -16,7 +16,7 @@
             box-sizing: border-box;
         }
 
-        /* Fullscreen background with the logo */
+        /* Fullscreen background */
         body {
             background: url('logo.jpg') no-repeat center center/cover;
             height: 100vh;
@@ -29,7 +29,6 @@
             position: relative;
         }
 
-        /* Dark overlay for readability */
         .overlay {
             position: absolute;
             top: 0;
@@ -92,6 +91,15 @@
             background: #e65c00;
         }
 
+        /* Thank You message */
+        #thank-you-message {
+            display: none;
+            font-size: 1.5em;
+            color: lime;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             h1 {
@@ -111,23 +119,33 @@
             <p><strong>COMING SOON...</strong></p>
             
             <!-- Contact Form -->
-            <div class="contact-form">
+            <div class="contact-form" id="contact-form">
                 <p>For any inquiry, contact:</p>
                 <p><strong>customercare@vimantech.in.net</strong></p>
                 <p><strong>chirayupurohit@vimantech.in.net</strong></p>
                 <p><strong>Or submit your inquiry below:</strong></p>
 
-                <form action="https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
+                <form action="https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse" method="POST" target="hidden_iframe" onsubmit="showThankYouMessage();">
                     <input type="text" name="entry.YOUR_NAME_ID" placeholder="Your Name" required>
                     <input type="email" name="entry.YOUR_EMAIL_ID" placeholder="Your Email" required>
                     <textarea name="entry.YOUR_MESSAGE_ID" placeholder="Your Message" rows="4" required></textarea>
                     <button type="submit">Submit</button>
                 </form>
 
-                <!-- Invisible iframe to prevent redirect -->
+                <!-- Invisible iframe to prevent redirection -->
                 <iframe name="hidden_iframe" style="display:none;"></iframe>
             </div>
+
+            <!-- Thank You Message -->
+            <p id="thank-you-message">Thank you! Your message has been submitted.</p>
         </div>
     </div>
+
+    <script>
+        function showThankYouMessage() {
+            document.getElementById("contact-form").style.display = "none"; // Hide the form
+            document.getElementById("thank-you-message").style.display = "block"; // Show the thank you message
+        }
+    </script>
 </body>
 </html>
